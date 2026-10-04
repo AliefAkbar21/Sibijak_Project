@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self' http://localhost:5000 http://127.0.0.1:5000 http://127.0.0.1:5500; font-src 'self' data: https://fonts.gstatic.com;"
+    />
+    <title>Dashboard Customer - Pengangkut Sampah</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <img
+            src="../../assets/images/LOGO_TRUK-removebg-preview.png"
+            alt="SIBIJAK Logo"
+            class="logo-icon"
+          />
+          <h2>SIBIJAK</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html" class="active"
+              ><span class="material-icons">home</span>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="order.html"
+              ><span class="material-icons">note_add</span>Buat Pesanan</a
+            >
+          </li>
+          <li>
+            <a href="orders.html"
+              ><span class="material-icons">inventory_2</span>Pesanan Saya</a
+            >
+          </li>
+          <li>
+            <a href="profile.html"
+              ><span class="material-icons">person</span>Profil</a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutBtn"
+              ><span class="material-icons">logout</span>Keluar</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main-content">
+        <header class="content-header">
+          <h1>Dashboard</h1>
+          <button class="btn-penpen" id="userName">penpen</button>
+        </header>
+
+        <div class="content-body">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon" style="background-color: #c8e6f5">
+                <span class="material-icons" style="color: #2c6e49"
+                  >inventory_2</span
+                >
+              </div>
+              <div class="stat-content">
+                <h3>TOTAL PESANAN</h3>
+                <p class="stat-value" id="totalOrders">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon" style="background-color: #fff4d9">
+                <span class="material-icons" style="color: #f9a825"
+                  >pending</span
+                >
+              </div>
+              <div class="stat-content">
+                <h3>PENDING</h3>
+                <p class="stat-value" id="pendingOrders">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon" style="background-color: #d4edd9">
+                <span class="material-icons" style="color: #2c6e49"
+                  >check_circle</span
+                >
+              </div>
+              <div class="stat-content">
+                <h3>SELESAI</h3>
+                <p class="stat-value" id="completedOrders">0</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon" style="background-color: #fff4d9">
+                <span class="material-icons" style="color: #f9a825">scale</span>
+              </div>
+              <div class="stat-content">
+                <h3>TOTAL SAMPAH</h3>
+                <p class="stat-value" id="totalWeight">0.0 kg</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Pesanan Terbaru</h2>
+            <div class="table-container" id="tableContainer">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Alamat</th>
+                    <th>Jenis Sampah</th>
+                    <th>Berat</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Tanggal</th>
+                  </tr>
+                </thead>
+                <tbody id="recentOrders">
+                  <tr>
+                    <td colspan="7" class="text-center">Loading...</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="empty-state" id="emptyState" style="display: none">
+                <div class="empty-icon">
+                  <span class="material-icons">inventory_2</span>
+                </div>
+                <h3>Belum ada pesanan</h3>
+                <p>Pesanan yang dibuat akan muncul di sini</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/customer-dashboard.js"></script>
+  </body>
+</html>

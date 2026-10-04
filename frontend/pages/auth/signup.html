@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self' http://localhost:5000 http://127.0.0.1:5000 http://127.0.0.1:5500; font-src 'self' data: https://fonts.gstatic.com;"
+    />
+    <title>Sign Up - Pengangkut Sampah</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-box">
+        <div class="auth-header">
+          <h1>Daftar Akun</h1>
+          <p>Buat akun baru untuk memulai</p>
+        </div>
+
+        <form id="signupForm" class="auth-form">
+          <div class="form-group">
+            <label for="role">Daftar Sebagai</label>
+            <div class="input-with-icon">
+              <span class="material-icons input-icon">person</span>
+              <select id="role" name="role" required>
+                <option value="customer">Customer</option>
+                <option value="driver">Driver</option>
+              </select>
+              <span class="material-icons select-arrow">expand_more</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Nama Lengkap</label>
+            <div class="input-with-icon">
+              <span class="material-icons input-icon">person</span>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Masukkan nama lengkap"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div class="input-with-icon">
+              <span class="material-icons input-icon">email</span>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="nama@email.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-with-icon">
+              <span class="material-icons input-icon">lock</span>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+                minlength="6"
+              />
+              <span
+                class="material-icons toggle-password"
+                id="togglePasswordSignup"
+                >visibility_off</span
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Nomor Telepon</label>
+            <div class="input-with-icon">
+              <span class="material-icons input-icon">phone</span>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="08xxxxxxxxxx"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Alamat</label>
+            <div class="input-with-icon">
+              <span class="material-icons input-icon">location_on</span>
+              <textarea
+                id="address"
+                name="address"
+                rows="3"
+                placeholder="Masukkan alamat lengkap"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Driver specific fields -->
+          <div id="driverFields" style="display: none">
+            <div class="form-group">
+              <label for="wilayah">Wilayah Penugasan</label>
+              <div class="input-with-icon">
+                <span class="material-icons input-icon">location_on</span>
+                <select id="wilayah" name="wilayah">
+                  <option value="">Pilih Wilayah</option>
+                  <option value="Larangan, Larangan Utara">
+                    Larangan, Larangan Utara
+                  </option>
+                  <option value="Larangan, Larangan Selatan">
+                    Larangan, Larangan Selatan
+                  </option>
+                  <option value="Larangan, Larangan Indah">
+                    Larangan, Larangan Indah
+                  </option>
+                  <option value="Larangan, Gaga">Larangan, Gaga</option>
+                  <option value="Larangan, Cipadu">Larangan, Cipadu</option>
+                  <option value="Larangan, Cipadu Jaya">
+                    Larangan, Cipadu Jaya
+                  </option>
+                  <option value="Larangan, Kreo">Larangan, Kreo</option>
+                  <option value="Larangan, Kreo Selatan">
+                    Larangan, Kreo Selatan
+                  </option>
+                </select>
+                <span class="material-icons select-arrow">expand_more</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sessionPreference">Sesi Pilihan</label>
+              <div class="input-with-icon">
+                <span class="material-icons input-icon">schedule</span>
+                <select id="sessionPreference" name="session_preference">
+                  <option value="both">Pagi & Sore</option>
+                  <option value="morning">Pagi</option>
+                  <option value="afternoon">Sore</option>
+                </select>
+                <span class="material-icons select-arrow">expand_more</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="vehicleNumber">Nomor Kendaraan</label>
+              <div class="input-with-icon">
+                <span class="material-icons input-icon">local_shipping</span>
+                <input
+                  type="text"
+                  id="vehicleNumber"
+                  name="vehicle_number"
+                  placeholder="B 1234 XYZ"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Daftar
+            </button>
+          </div>
+
+          <div class="form-footer">
+            <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+          </div>
+        </form>
+
+        <div
+          id="errorMessage"
+          class="alert alert-error"
+          style="display: none"
+        ></div>
+      </div>
+    </div>
+
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/signup.js"></script>
+  </body>
+</html>

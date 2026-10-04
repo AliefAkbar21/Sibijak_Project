@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; connect-src 'self' http://localhost:5000 http://127.0.0.1:5000 http://127.0.0.1:5500 https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; frame-src 'none'; object-src 'none';"
+    />
+    <title>SIBIJAK - Solusi Pengangkutan Sampah yang Mudah</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/landing.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <img
+            src="assets/images/LOGO_TRUK-removebg-preview.png"
+            alt="SIBIJAK Logo"
+            class="logo-icon"
+          />
+          <span class="brand-name">SIBIJAK</span>
+        </div>
+        <div class="nav-menu">
+          <a href="#features">Fitur</a>
+          <a href="#how-it-works">Cara Kerja</a>
+          <a href="#pricing">Harga</a>
+          <a href="pages/auth/login.html" class="nav-link">Masuk</a>
+          <a href="pages/auth/signup.html" class="btn-daftar">Daftar</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="material-icons">eco</span>
+          Solusi Modern untuk Lingkungan Bersih
+        </div>
+        <h1 class="hero-title">Solusi Pengangkutan Sampah yang Mudah</h1>
+        <p class="hero-subtitle">
+          Kelola sampah Anda dengan lebih efisien. Pesan, pantau, dan daur ulang
+          dengan mudah.
+        </p>
+        <div class="hero-buttons">
+          <a href="pages/auth/signup.html?role=customer" class="btn-primary">
+            Mulai Sekarang
+            <span class="material-icons">arrow_forward</span>
+          </a>
+          <a href="pages/auth/signup.html?role=driver" class="btn-outline">
+            Daftar Sebagai Driver
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-value" data-target="10" data-suffix="K+">0K+</div>
+            <div class="stat-label">Pengguna Aktif</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" data-target="50" data-suffix="K+">0K+</div>
+            <div class="stat-label">Ton Sampah</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" data-target="98" data-suffix="%">0%</div>
+            <div class="stat-label">Kepuasan</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">Fitur Unggulan</h2>
+        <p class="section-subtitle">
+          Nikmati berbagai kemudahan dalam mengelola sampah Anda
+        </p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon location-icon">
+              <span class="material-icons">location_on</span>
+            </div>
+            <h3>Lacak Lokasi</h3>
+            <p>
+              Tentukan titik pengambilan sampah dengan mudah menggunakan maps
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon cart-icon">
+              <span class="material-icons">shopping_cart</span>
+            </div>
+            <h3>Pesan Online</h3>
+            <p>Buat pesanan pengambilan sampah kapan saja, dimana saja</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon recycle-icon">
+              <span class="material-icons">autorenew</span>
+            </div>
+            <h3>Daur Ulang</h3>
+            <p>Pilih jenis sampah: Kertas, Kaca, Organik, atau Plastik</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon money-icon">
+              <span class="material-icons">attach_money</span>
+            </div>
+            <h3>Harga Transparan</h3>
+            <p>Hitung biaya secara otomatis berdasarkan berat sampah</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">Cara Kerja</h2>
+        <p class="section-subtitle">Proses sederhana dalam 4 langkah mudah</p>
+        <div class="steps-container">
+          <div class="progress-line"></div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-icon">
+                <span class="material-icons">person_add</span>
+              </div>
+              <h3>Daftar</h3>
+              <p>Buat akun sebagai customer atau driver</p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-icon">
+                <span class="material-icons">receipt_long</span>
+              </div>
+              <h3>Pesan</h3>
+              <p>Tentukan lokasi, jenis, dan jadwal pengambilan</p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-icon">
+                <span class="material-icons">description</span>
+              </div>
+              <h3>Pickup</h3>
+              <p>Driver akan mengambil sampah sesuai jadwal</p>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-icon">
+                <span class="material-icons">check_circle</span>
+              </div>
+              <h3>Selesai</h3>
+              <p>Sampah dikelola dengan baik dan lingkungan terjaga</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2 class="section-title">Harga</h2>
+        <p class="section-subtitle">
+          Harga yang jelas dan terjangkau untuk semua jenis sampah
+        </p>
+        <div class="pricing-card">
+          <div class="pricing-badge">
+            <span class="material-icons">verified</span>
+            Harga Terbaik
+          </div>
+          <div class="pricing-header">
+            <span class="price-label">Rp</span>
+            <span class="price-value">10.000</span>
+            <span class="price-unit">/ kg</span>
+          </div>
+          <p class="pricing-description">
+            Harga standar untuk semua jenis sampah
+          </p>
+          <ul class="pricing-features">
+            <li>
+              <span class="material-icons">check_circle</span>
+              Pengambilan sampah terjadwal
+            </li>
+            <li>
+              <span class="material-icons">check_circle</span>
+              Lacak lokasi driver real-time
+            </li>
+            <li>
+              <span class="material-icons">check_circle</span>
+              Laporan daur ulang
+            </li>
+            <li>
+              <span class="material-icons">check_circle</span>
+              Pembayaran digital
+            </li>
+            <li>
+              <span class="material-icons">check_circle</span>
+              Customer support 24/7
+            </li>
+            <li>
+              <span class="material-icons">check_circle</span>
+              Bonus poin reward
+            </li>
+          </ul>
+          <button class="btn-pricing">Mulai Sekarang</button>
+          <p class="pricing-note">
+            *Harga dapat berubah tergantung lokasi dan jenis sampah khusus
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <div class="footer-brand">
+              <img
+                src="assets/images/LOGO_TRUK-removebg-preview.png"
+                alt="SIBIJAK Logo"
+                class="logo-icon"
+              />
+              <span class="brand-name">SIBIJAK</span>
+            </div>
+            <p class="footer-desc">
+              Solusi modern untuk pengangkutan sampah yang efisien dan ramah
+              lingkungan
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram">
+                <span class="material-icons">camera_alt</span>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <span class="material-icons">facebook</span>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <span class="material-icons">tag</span>
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#features">Fitur</a></li>
+              <li><a href="#how-it-works">Cara Kerja</a></li>
+              <li><a href="#pricing">Harga</a></li>
+              <li><a href="#">Tentang Kami</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Dukungan</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Bantuan</a></li>
+              <li><a href="#">Kebijakan Privasi</a></li>
+              <li><a href="#">Syarat & Ketentuan</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Kontak</h4>
+            <ul class="contact-list">
+              <li>
+                <span class="material-icons">email</span>
+                <span>support@sibijak.com</span>
+              </li>
+              <li>
+                <span class="material-icons">phone</span>
+                <span>+62 812-3456-7890</span>
+              </li>
+              <li>
+                <span class="material-icons">location_on</span>
+                <span>Jakarta, Indonesia</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Sibijak. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

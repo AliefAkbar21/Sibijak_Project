@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; connect-src 'self' http://localhost:5000 http://127.0.0.1:5000 http://127.0.0.1:5500; font-src 'self' data: https://fonts.gstatic.com;"
+    />
+    <title>Verifikasi Driver - SIBIJAK</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <img
+            src="../../assets/images/LOGO_TRUK-removebg-preview.png"
+            alt="SIBIJAK Logo"
+            class="logo-icon"
+          />
+          <h2>SIBIJAK</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html">
+              <span class="material-icons">dashboard</span>Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="regional-report.html">
+              <span class="material-icons">location_on</span>Laporan Wilayah
+              penugasan
+            </a>
+          </li>
+          <li>
+            <a href="orders.html">
+              <span class="material-icons">assignment</span>Konfirmasi Pesanan
+            </a>
+          </li>
+          <li>
+            <a href="drivers.html" class="active">
+              <span class="material-icons">people</span>Verifikasi Driver
+            </a>
+          </li>
+          <li>
+            <a href="#" id="logoutBtn">
+              <span class="material-icons">logout</span>Keluar
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main-content">
+        <header class="content-header">
+          <div>
+            <h1>Verifikasi Driver</h1>
+            <p class="header-subtitle">
+              Kelola dan verifikasi pendaftaran driver baru
+            </p>
+          </div>
+          <button class="btn-penpen" id="userName">Admin</button>
+        </header>
+
+        <div class="content-body">
+          <!-- Filter Tabs -->
+          <div class="admin-filter-bar">
+            <div class="filter-tabs">
+              <button class="filter-tab active" data-filter="pending">
+                Menunggu Verifikasi
+              </button>
+              <button class="filter-tab" data-filter="verified">
+                Sudah Terverifikasi
+              </button>
+              <button class="filter-tab" data-filter="all">Semua Driver</button>
+            </div>
+          </div>
+
+          <!-- Drivers List -->
+          <div class="dashboard-card">
+            <div class="card-body">
+              <div id="driversList" class="drivers-verification-list">
+                <div class="loading-state">
+                  <span class="material-icons spinning">sync</span>
+                  <p>Memuat data driver...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Driver Detail Modal -->
+    <div id="driverDetailModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Detail Driver</h2>
+          <span class="close" id="closeModal">&times;</span>
+        </div>
+        <div class="modal-body" id="driverDetailContent">
+          <!-- Driver details will be loaded here -->
+        </div>
+        <div class="modal-footer" id="driverModalFooter">
+          <!-- Action buttons will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/admin-drivers.js"></script>
+  </body>
+</html>

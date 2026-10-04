@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; connect-src 'self' http://localhost:5000 http://127.0.0.1:5000 http://127.0.0.1:5500; font-src 'self' data: https://fonts.gstatic.com;"
+    />
+    <title>Dashboard Admin - SIBIJAK</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <img
+            src="../../assets/images/LOGO_TRUK-removebg-preview.png"
+            alt="SIBIJAK Logo"
+            class="logo-icon"
+          />
+          <h2>SIBIJAK</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html" class="active">
+              <span class="material-icons">dashboard</span>Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="regional-report.html">
+              <span class="material-icons">location_on</span>Laporan Wilayah
+              penugasan
+            </a>
+          </li>
+          <li>
+            <a href="orders.html">
+              <span class="material-icons">assignment</span>Konfirmasi Pesanan
+            </a>
+          </li>
+          <li>
+            <a href="drivers.html">
+              <span class="material-icons">people</span>Verifikasi Driver
+            </a>
+          </li>
+          <li>
+            <a href="#" id="logoutBtn">
+              <span class="material-icons">logout</span>Keluar
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main-content">
+        <header class="content-header">
+          <div>
+            <h1>Dashboard</h1>
+            <p class="header-subtitle">
+              Ringkasan aktivitas pengangkutan sampah hari ini
+            </p>
+          </div>
+          <button class="btn-penpen" id="userName">Admin</button>
+        </header>
+
+        <div class="content-body">
+          <!-- Stats Cards -->
+          <div class="dashboard-stats-grid">
+            <div class="dashboard-stat-card stat-primary">
+              <div class="stat-icon-wrapper stat-icon-blue">
+                <span class="material-icons">shopping_bag</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Total Pesanan</p>
+                <h2 class="stat-value" id="totalOrders">0</h2>
+                <div class="stat-change positive">
+                  <span class="material-icons">trending_up</span>
+                  <span id="totalOrdersChange">+12%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-stat-card stat-success">
+              <div class="stat-icon-wrapper stat-icon-green">
+                <span class="material-icons">check_circle</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Pesanan Selesai</p>
+                <h2 class="stat-value" id="completedOrders">0</h2>
+                <div class="stat-change positive">
+                  <span class="material-icons">trending_up</span>
+                  <span id="completedOrdersChange">+8%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-stat-card stat-warning">
+              <div class="stat-icon-wrapper stat-icon-orange">
+                <span class="material-icons">schedule</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Menunggu Konfirmasi</p>
+                <h2 class="stat-value" id="pendingOrders">0</h2>
+                <div class="stat-change">
+                  <span class="material-icons">add</span>
+                  <span id="pendingOrdersChange">+5</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-stat-card stat-danger">
+              <div class="stat-icon-wrapper stat-icon-red">
+                <span class="material-icons">cancel</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Dibatalkan</p>
+                <h2 class="stat-value" id="cancelledOrders">0</h2>
+                <div class="stat-change negative">
+                  <span class="material-icons">trending_down</span>
+                  <span id="cancelledOrdersChange">-3%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Orders and Drivers Section -->
+          <div class="dashboard-grid">
+            <!-- Recent Orders -->
+            <div class="dashboard-card">
+              <div class="card-header">
+                <div class="card-header-left">
+                  <span class="material-icons card-icon">shopping_cart</span>
+                  <h2>Pesanan Terbaru</h2>
+                </div>
+                <a href="orders.html" class="card-link">Hari ini</a>
+              </div>
+              <div class="orders-list" id="recentOrdersList">
+                <div class="loading-skeleton">
+                  <p>Loading...</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Drivers -->
+            <div class="dashboard-card">
+              <div class="card-header">
+                <div class="card-header-left">
+                  <span class="material-icons card-icon">people</span>
+                  <h2>Driver Aktif</h2>
+                </div>
+              </div>
+              <div class="drivers-list" id="activeDriversList">
+                <div class="loading-skeleton">
+                  <p>Loading...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/admin-dashboard.js"></script>
+  </body>
+</html>

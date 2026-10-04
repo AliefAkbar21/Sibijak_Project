@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; connect-src 'self' http://localhost:5000 http://127.0.0.1:5000 http://127.0.0.1:5500; font-src 'self' data: https://fonts.gstatic.com;"
+    />
+    <title>Dashboard Driver - SIBIJAK</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <img
+            src="../../assets/images/LOGO_TRUK-removebg-preview.png"
+            alt="SIBIJAK Logo"
+            class="logo-icon"
+          />
+          <h2>SIBIJAK</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html" class="active">
+              <span class="material-icons">dashboard</span>Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="orders.html">
+              <span class="material-icons">list_alt</span>Daftar Pesanan
+            </a>
+          </li>
+          <li>
+            <a href="my-orders.html">
+              <span class="material-icons">local_shipping</span>Pengambilan
+              Pesanan
+            </a>
+          </li>
+          <li>
+            <a href="profile.html">
+              <span class="material-icons">person</span>Profil
+            </a>
+          </li>
+          <li>
+            <a href="#" id="logoutBtn">
+              <span class="material-icons">logout</span>Keluar
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main-content">
+        <header class="content-header">
+          <div>
+            <h1>Dashboard</h1>
+            <p class="header-subtitle">
+              Selamat datang, <span id="driverName">Driver</span>
+            </p>
+          </div>
+          <button class="btn-penpen" id="userName">Driver</button>
+        </header>
+
+        <div class="content-body">
+          <!-- Stats Cards -->
+          <div class="dashboard-stats-grid">
+            <div class="dashboard-stat-card stat-primary">
+              <div class="stat-icon-wrapper stat-icon-blue">
+                <span class="material-icons">assignment</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Pesanan Tersedia</p>
+                <h2 class="stat-value" id="availableOrders">0</h2>
+              </div>
+            </div>
+
+            <div class="dashboard-stat-card stat-warning">
+              <div class="stat-icon-wrapper stat-icon-orange">
+                <span class="material-icons">pending_actions</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Dalam Proses</p>
+                <h2 class="stat-value" id="inProgressOrders">0</h2>
+              </div>
+            </div>
+
+            <div class="dashboard-stat-card stat-success">
+              <div class="stat-icon-wrapper stat-icon-green">
+                <span class="material-icons">check_circle</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Selesai Hari Ini</p>
+                <h2 class="stat-value" id="completedToday">0</h2>
+              </div>
+            </div>
+
+            <div class="dashboard-stat-card stat-info">
+              <div class="stat-icon-wrapper stat-icon-purple">
+                <span class="material-icons">military_tech</span>
+              </div>
+              <div class="stat-content">
+                <p class="stat-label">Total Selesai</p>
+                <h2 class="stat-value" id="totalCompleted">0</h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- Available Orders Section -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div class="card-header-left">
+                <span class="material-icons card-icon">assignment</span>
+                <h2>Pesanan Tersedia</h2>
+              </div>
+              <a href="orders.html" class="card-link">Lihat Semua</a>
+            </div>
+            <div id="availableOrdersList" class="driver-orders-grid">
+              <div class="loading-state">
+                <span class="material-icons spinning">sync</span>
+                <p>Memuat pesanan...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Logs Section -->
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div class="card-header-left">
+                <span class="material-icons card-icon">history</span>
+                <h2>Aktivitas Terbaru</h2>
+              </div>
+              <a href="my-orders.html" class="card-link">Lihat Semua</a>
+            </div>
+            <div
+              id="activityLogsList"
+              style="background: white; border-radius: 8px"
+            >
+              <div class="loading-state">
+                <span class="material-icons spinning">sync</span>
+                <p>Memuat aktivitas...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/driver-dashboard.js"></script>
+  </body>
+</html>

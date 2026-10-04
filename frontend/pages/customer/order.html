@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: blob: https://unpkg.com https://*.openstreetmap.org https://*.tile.openstreetmap.org https://tile.openstreetmap.org https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org; connect-src 'self' http://localhost:5000 http://127.0.0.1:5000 https://unpkg.com https://*.openstreetmap.org https://*.tile.openstreetmap.org https://tile.openstreetmap.org; font-src 'self' data: https://fonts.gstatic.com; frame-src 'none'; object-src 'none';"
+    />
+    <title>Buat Pesanan - Pengangkut Sampah</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <img
+            src="../../assets/images/LOGO_TRUK-removebg-preview.png"
+            alt="SIBIJAK Logo"
+            class="logo-icon"
+          />
+          <h2>SIBIJAK</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="dashboard.html"
+              ><span class="material-icons">home</span>Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="order.html" class="active"
+              ><span class="material-icons">note_add</span>Buat Pesanan</a
+            >
+          </li>
+          <li>
+            <a href="orders.html"
+              ><span class="material-icons">inventory_2</span>Pesanan Saya</a
+            >
+          </li>
+          <li>
+            <a href="profile.html"
+              ><span class="material-icons">person</span>Profil</a
+            >
+          </li>
+          <li>
+            <a href="#" id="logoutBtn"
+              ><span class="material-icons">logout</span>Keluar</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <main class="main-content">
+        <header class="content-header">
+          <h1>Buat Pesanan Baru</h1>
+          <button class="btn-penpen" id="userName">penpen</button>
+        </header>
+
+        <div class="content-body">
+          <div class="section">
+            <form id="orderForm" class="order-form">
+              <div class="form-group">
+                <label
+                  ><span class="material-icons">person</span> Nama
+                  Pemesan</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Masukkan nama pemesan"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="domicile"
+                  ><span class="material-icons">location_on</span> Alamat
+                  Domisili</label
+                >
+                <div class="select-wrapper">
+                  <select id="domicile" name="domicile" required>
+                    <option value=""></option>
+                    <option value="Larangan, Larangan Utara">
+                      Larangan, Larangan Utara
+                    </option>
+                    <option value="Larangan, Larangan Selatan">
+                      Larangan, Larangan Selatan
+                    </option>
+                    <option value="Larangan, Larangan Indah">
+                      Larangan, Larangan Indah
+                    </option>
+                    <option value="Larangan, Gaga">Larangan, Gaga</option>
+                    <option value="Larangan, Cipadu">Larangan, Cipadu</option>
+                    <option value="Larangan, Cipadu Jaya">
+                      Larangan, Cipadu Jaya
+                    </option>
+                    <option value="Larangan, Kreo">Larangan, Kreo</option>
+                    <option value="Larangan, Kreo Selatan">
+                      Larangan, Kreo Selatan
+                    </option>
+                  </select>
+                  <span class="material-icons select-arrow">expand_more</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  ><span class="material-icons">location_on</span> Alamat
+                  Lengkap</label
+                >
+                <textarea
+                  id="address"
+                  name="address"
+                  rows="3"
+                  placeholder="Masukkan alamat lengkap"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label
+                  ><span class="material-icons">map</span> Tentukan Lokasi di
+                  Peta</label
+                >
+                <div class="map-container">
+                  <div id="map"></div>
+                  <p class="form-hint">
+                    <span class="material-icons">info</span>
+                    Klik pada peta untuk menentukan lokasi pengambilan
+                  </p>
+                </div>
+              </div>
+
+              <input
+                type="hidden"
+                id="latitude"
+                name="latitude"
+                aria-label="Latitude koordinat"
+              />
+              <input
+                type="hidden"
+                id="longitude"
+                name="longitude"
+                aria-label="Longitude koordinat"
+              />
+
+              <div class="form-group">
+                <label for="wasteType"
+                  ><span class="material-icons">delete</span> Jenis
+                  Sampah</label
+                >
+                <div class="select-wrapper">
+                  <select id="wasteType" name="waste_type" required>
+                    <option value="">Pilih Jenis Sampah</option>
+                    <option value="paper">Kertas</option>
+                    <option value="glass">Kaca</option>
+                    <option value="organic">Organik</option>
+                    <option value="plastic">Plastik</option>
+                  </select>
+                  <span class="material-icons select-arrow">expand_more</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  ><span class="material-icons">scale</span> Berat (kg)</label
+                >
+                <input
+                  type="number"
+                  id="weight"
+                  name="weight"
+                  step="0.1"
+                  min="0.1"
+                  max="1000"
+                  placeholder="Masukkan berat sampah"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="pickupSession"
+                  ><span class="material-icons">schedule</span> Sesi
+                  Waktu</label
+                >
+                <div class="select-wrapper">
+                  <select id="pickupSession" name="pickup_session" required>
+                    <option value="">Pilih Sesi</option>
+                    <option value="morning">Pagi (08:00 - 12:00)</option>
+                    <option value="afternoon">Sore (13:00 - 17:00)</option>
+                  </select>
+                  <span class="material-icons select-arrow">expand_more</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="pickupDate"
+                  ><span class="material-icons">calendar_today</span> Tanggal
+                  Pengambilan</label
+                >
+                <input
+                  type="date"
+                  id="pickupDate"
+                  name="pickup_date"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label
+                  ><span class="material-icons">note</span> Catatan
+                  (Optional)</label
+                >
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Tambahkan catatan jika diperlukan"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Metode Pembayaran</label>
+                <div class="payment-options">
+                  <div class="payment-option" data-method="cash">
+                    <input
+                      type="radio"
+                      id="paymentCash"
+                      name="payment_method"
+                      value="cash"
+                      checked
+                    />
+                    <label for="paymentCash">
+                      <div class="payment-info-box">
+                        <div class="payment-icon">
+                          <span class="material-icons">payments</span>
+                        </div>
+                        <div class="payment-text">
+                          <strong>Cash</strong>
+                          <span>Bayar tunai saat pengambilan</span>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="payment-option" data-method="qris">
+                    <input
+                      type="radio"
+                      id="paymentQris"
+                      name="payment_method"
+                      value="qris"
+                    />
+                    <label for="paymentQris">
+                      <div class="payment-info-box">
+                        <div class="payment-icon">
+                          <span class="material-icons">qr_code_scanner</span>
+                        </div>
+                        <div class="payment-text">
+                          <strong>QRIS</strong>
+                          <span>Scan QR code untuk bayar</span>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="price-calculation" id="priceCalc">
+                <h3>Rincian Harga</h3>
+                <div class="price-row">
+                  <span>Harga Dasar:</span>
+                  <span id="basePrice">Rp 0</span>
+                </div>
+                <div class="price-row">
+                  <span>Admin Fee (1%):</span>
+                  <span id="adminFee">Rp 0</span>
+                </div>
+                <div class="price-row" id="additionalFeeRow">
+                  <span>Biaya Tambahan (5%):</span>
+                  <span id="additionalFee">Rp 0</span>
+                </div>
+                <div class="price-row total">
+                  <span><strong>Total:</strong></span>
+                  <span id="totalPrice"><strong>Rp 0</strong></span>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="history.back()"
+                >
+                  Batal
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Buat Pesanan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- QRIS Payment Modal -->
+    <div id="qrisModal" class="modal">
+      <div class="modal-content qris-modal">
+        <div class="qris-header">
+          <div class="qris-logo">
+            <img
+              src="../../assets/images/qris.jpg"
+              alt="QRIS Logo"
+              class="qris-logo-img"
+            />
+          </div>
+          <div class="qris-title">
+            <strong>QR Code Standar</strong>
+            <span>Pembayaran Nasional</span>
+          </div>
+        </div>
+
+        <div class="qris-body">
+          <div class="qr-code-container">
+            <img
+              src="../../assets/images/qris.jpg"
+              alt="QR Code"
+              id="qrCodeImage"
+            />
+            <div class="qr-corner qr-corner-top-left"></div>
+            <div class="qr-corner qr-corner-bottom-right"></div>
+          </div>
+
+          <div class="upload-section">
+            <label class="upload-label">Upload Bukti Pembayaran</label>
+            <div class="upload-input-wrapper">
+              <input
+                type="file"
+                id="paymentProof"
+                accept="image/*"
+                class="file-input"
+              />
+              <label for="paymentProof" class="file-input-label">
+                <span class="material-icons">attach_file</span>
+                <span id="fileNameDisplay"
+                  >Tambahkan catatan jika diperlukan</span
+                >
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="qrisCancel">
+            Batal
+          </button>
+          <button type="button" class="btn btn-primary" id="qrisSubmit">
+            Kirim
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/customer-order.js"></script>
+  </body>
+</html>
